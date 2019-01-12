@@ -9,12 +9,18 @@ def init_db
 	@bd = results_as_hush = true
 end
 
+#before вызывается каждый раз при перезагрузке любой страницы
 before do
+	#инициализация БД
 	init_db
 end
 
+	# вызывается каждый раз при конфигурации приложения
+	#когда изменился код и перезагрузилась страница
 configure do
+	#инициализация БД
 	init_db
+	#создаем таблицу, если таблица существует
 	@db.execute 'Create table if not exists Posts
 	( 
 	id integer primary key autoincrement,
@@ -32,7 +38,7 @@ end
 
 post '/new' do
 	
-
+	#получаем переменную из POST-запроса
 	content = params[:content]
 
 	erb "You types #{content}"
