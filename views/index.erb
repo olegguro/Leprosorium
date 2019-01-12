@@ -1,1 +1,11 @@
 <h2>Latest posts:</h2>
+<br/>
+<% @results.each do |post| %>
+	<p>
+		<%= post [2] %>
+		<br/>
+		<br/>
+		Added at: <%= post [1] %>
+	</p>
+	<hr/>
+<% end %>

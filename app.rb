@@ -24,8 +24,8 @@ configure do
 	@db.execute 'Create table if not exists Posts
 	( 
 	id integer primary key autoincrement,
-	created_date DATE,
-	content TEXT);' 
+	created_date, DATE,
+	content, TEXT);' 
 end
 	
 get '/' do
