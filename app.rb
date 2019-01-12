@@ -24,8 +24,15 @@ configure do
 	@db.execute 'Create table if not exists Posts
 	( 
 	id integer primary key autoincrement,
-	created_date, DATE,
-	content, TEXT);' 
+	created_date DATE,
+	content TEXT)' 
+
+	@db.execute 'Create table if not exists Comments
+	( 
+	id integer primary key autoincrement,
+	created_date DATE,
+	content TEXT,
+	post_id integer)' 
 end
 	
 get '/' do
