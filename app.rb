@@ -48,10 +48,15 @@ post '/new' do
 		return erb :new
 	end
 	#сохранение данных в БД
-	@db.execute 'insert into Posts (content, created_date) values (?, datetime())',
-	[content]
+	@db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content]
 
 	#перенаправление на гл. страницу
 	redirect to '/'
-	
+end
+
+	#ввывод информации о посте
+get '/details/:post_id' do
+	post_id = params[:post_id]
+
+	erb "Displaying for post with id #{post_id}"
 end
