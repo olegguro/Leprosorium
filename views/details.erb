@@ -6,3 +6,11 @@
 		<br/>
 		Added at: <%= @row [1] %>
 </p>
+<br>
+<h4>Comments:</h4>
+<p>
+<form action="/details/<%= @row [0] %>" method="POST" role="form">
+  <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6" placeholder="Type comment text here"></textarea>
+  <br/>
+  <button type="submit" class="btn btn-primary">Add comment</button>
+  <p/>
