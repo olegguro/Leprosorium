@@ -24,8 +24,8 @@ configure do
 	@db.execute 'Create table if not exists Posts
 	( 
 	id integer primary key autoincrement,
-	created_date, DATE,
-	content, TEXT);' 
+	created_date DATE,
+	content TEXT);' 
 end
 	
 get '/' do
@@ -44,6 +44,9 @@ post '/new' do
 		@error = 'Type post text'
 		return erb :new
 	end
+
+	@db.execute 'insert into Posts (content, created_date) values (?, datetime())',
+	[content]
 
 	erb "You types #{content}"
 end
